@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+\mode<presentation> {
+\usetheme{Boadilla}
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{mathrsfs}
+\usepackage{biblatex}
+\addbibresource{biblio.bib}
+%--------------------------------------
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\title[]{Верификация асимптотической оценки временной сложности в задачах динамического программирования} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Григорянц Сергей Арменович} % Your name
+\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{Московский физико-технический институт \\
+Физтех-школа Прикладной Математики и Информатики \\
+Кафедра дискретной математики\\ % Your institution for the title page
+Научный руководитель: Дашков Евгений Владимирович
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Постановка задачи}
+	\begin{block}{Цель работы}
+		\begin{itemize}
+			\item<2-> Исследование методов формальной верификации корректности и асимптотики алгоритмов.
+			\item<3-> Применение исследованных методов на примере верификации алгоритма динамического программирования LCS.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Зачем нужна формальная верификация?}
+	\begin{block}{Сферы применения}
+		\begin{itemize}
+			\item<2-> Аппаратное обеспечение \cite{intel}
+			\item<2-> Компьютерная безопасность
+			\item<3-> Криптография
+			\item<4-> Медицина
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[shrink=30]
+	\frametitle{Список литературы}
+	\printbibliography
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

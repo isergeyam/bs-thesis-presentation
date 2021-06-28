@@ -1,0 +1,102 @@
+@inproceedings{intel,
+  author    = {Harrison, J.},
+  booktitle = {18th Annual IEEE Symposium of Logic in Computer Science, 2003. Proceedings.},
+  title     = {Formal verification at Intel},
+  year      = {2003},
+  volume    = {},
+  number    = {},
+  pages     = {45-54},
+  doi       = {10.1109/LICS.2003.1210044}
+}
+
+@inproceedings{fv-hardware,
+  author    = {Umrigar, Zerksis D. and Pitchumani, Vijay},
+  title     = {Formal Verification of a Real-Time Hardware Design},
+  year      = {1983},
+  isbn      = {0818600268},
+  publisher = {IEEE Press},
+  abstract  = {As hardware systems continue to grow more complex, formal methods for their design and verification become increasingly important. In this paper, we develop the design and formal specifications for the receiver section of an Universal Asynchronous Receiver/Transmitter. Though no mechanical verification has been done, such a development methodology is essential for formal verification. The emphasis here is on transforming informal specifications into formal ones, and showing how these formal specifications impact the design. The specification process helps us in formulating bounds on the relative drift between the receiver and transmitter clocks. We then develop the design in a top-down manner using a hardware description language which borrows from both APL and PASCAL.},
+  booktitle = {Proceedings of the 20th Design Automation Conference},
+  pages     = {221–227},
+  numpages  = {7},
+  location  = {Miami Beach, Florida, USA},
+  series    = {DAC '83}
+}
+
+@book{fv-book,
+  author    = {Seligman, Erik and Schubert, Tom and Kumar, M V Achutha Kiran},
+  title     = {Formal Verification: An Essential Toolkit for Modern VLSI Design},
+  year      = {2015},
+  isbn      = {9780128008157},
+  publisher = {Morgan Kaufmann Publishers Inc.},
+  address   = {San Francisco, CA, USA},
+  abstract  = {Formal Verification: An Essential Toolkit for Modern VLSI Design presents practical approaches for design and validation, with hands-on advice to help working engineers integrate these techniques into their work. Formal Verification (FV) enables a designer to directly analyze and mathematically explore the quality or other aspects of a Register Transfer Level (RTL) design without using simulations. This can reduce time spent validating designs and more quickly reach a final design for manufacturing. Building on a basic knowledge of SystemVerilog, this book demystifies FV and presents the practical applications that are bringing it into mainstream design and validation processes at Intel and other companies. After reading this book, readers will be prepared to introduce FV in their organization and effectively deploy FV techniques to increase design and validation productivity. Learn formal verification algorithms to gain full coverage without exhaustive simulation Understand formal verification tools and how they differ from simulation tools Create instant test benches to gain insight into how models work and find initial bugs Learn from Intel insiders sharing their hard-won knowledge and solutions to complex design problems Table of Contents Formal Verification: From Dreams to Reality Basic Formal Verification Algorithms Introduction to SystemVerilog Assertions Formal Property Verification Effective FPV For Design Exercise Effective FPV for Verification FPV Apps for Specific SOC Problems Formal Equivalence Verification Formal Verification's Greatest Bloopers: The Danger of False Positives Dealing with Complexity Your New FV-Aware Lifestyle}
+}
+
+@article{Scilla,
+  author     = {Sergey, Ilya and Nagaraj, Vaivaswatha and Johannsen, Jacob and Kumar, Amrit and Trunov, Anton and Hao, Ken Chan Guan},
+  title      = {Safer Smart Contract Programming with Scilla},
+  year       = {2019},
+  issue_date = {October 2019},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {3},
+  number     = {OOPSLA},
+  url        = {https://doi.org/10.1145/3360611},
+  doi        = {10.1145/3360611},
+  abstract   = {The rise of programmable open distributed consensus platforms based on the blockchain technology has aroused a lot of interest in replicated stateful computations, aka smart contracts. As blockchains are used predominantly in financial applications, smart contracts frequently manage millions of dollars worth of virtual coins. Since smart contracts cannot be updated once deployed, the ability to reason about their correctness becomes a critical task. Yet, the de facto implementation standard, pioneered by the Ethereum platform, dictates smart contracts to be deployed in a low-level language, which renders independent audit and formal verification of deployed code infeasible in practice.  We report an ongoing experiment held with an industrial blockchain vendor on designing, evaluating, and deploying Scilla, a new programming language for safe smart contracts. Scilla is positioned as an intermediate-level language, suitable to serve as a compilation target and also as an independent programming framework. Taking System F as a foundational calculus, Scilla offers strong safety guarantees by means of type soundness. It provides a clean separation between pure computational, state-manipulating, and communication aspects of smart contracts, avoiding many known pitfalls due to execution in a byzantine environment. We describe the motivation, design principles, and semantics of Scilla, and we report on Scilla use cases provided by the developer community. Finally, we present a framework for lightweight verification of Scilla programs, and showcase it with two domain-specific analyses on a suite of real-world use cases.},
+  journal    = {Proc. ACM Program. Lang.},
+  month      = oct,
+  articleno  = {185},
+  numpages   = {30},
+  keywords   = {Domain-Specific Languages, Static Analysis, Smart Contracts, Blockchain}
+}
+
+@article{CompCert,
+  author     = {Leroy, Xavier},
+  title      = {Formal Verification of a Realistic Compiler},
+  year       = {2009},
+  issue_date = {July 2009},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {52},
+  number     = {7},
+  issn       = {0001-0782},
+  url        = {https://doi.org/10.1145/1538788.1538814},
+  doi        = {10.1145/1538788.1538814},
+  abstract   = {This paper reports on the development and formal verification (proof of semantic preservation) of CompCert, a compiler from Clight (a large subset of the C programming language) to PowerPC assembly code, using the Coq proof assistant both for programming the compiler and for proving its correctness. Such a verified compiler is useful in the context of critical software and its formal verification: the verification of the compiler guarantees that the safety properties proved on the source code hold for the executable compiled code as well.},
+  journal    = {Commun. ACM},
+  month      = jul,
+  pages      = {107–115},
+  numpages   = {9}
+}
+
+@inproceedings{seL4,
+  author    = {Klein, Gerwin and Elphinstone, Kevin and Heiser, Gernot and Andronick, June and Cock, David and Derrin, Philip and Elkaduwe, Dhammika and Engelhardt, Kai and Kolanski, Rafal and Norrish, Michael and Sewell, Thomas and Tuch, Harvey and Winwood, Simon},
+  title     = {SeL4: Formal Verification of an OS Kernel},
+  year      = {2009},
+  isbn      = {9781605587523},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/1629575.1629596},
+  doi       = {10.1145/1629575.1629596},
+  abstract  = {Complete formal verification is the only known way to guarantee that a system is free of programming errors.We present our experience in performing the formal, machine-checked verification of the seL4 microkernel from an abstract specification down to its C implementation. We assume correctness of compiler, assembly code, and hardware, and we used a unique design approach that fuses formal and operating systems techniques. To our knowledge, this is the first formal proof of functional correctness of a complete, general-purpose operating-system kernel. Functional correctness means here that the implementation always strictly follows our high-level abstract specification of kernel behaviour. This encompasses traditional design and implementation safety properties such as the kernel will never crash, and it will never perform an unsafe operation. It also proves much more: we can predict precisely how the kernel will behave in every possible situation.seL4, a third-generation microkernel of L4 provenance, comprises 8,700 lines of C code and 600 lines of assembler. Its performance is comparable to other high-performance L4 kernels.},
+  booktitle = {Proceedings of the ACM SIGOPS 22nd Symposium on Operating Systems Principles},
+  pages     = {207–220},
+  numpages  = {14},
+  keywords  = {sel4, microkernel, l4, isabelle/hol},
+  location  = {Big Sky, Montana, USA},
+  series    = {SOSP '09}
+}
+
+@misc{horror,
+  author = {N. Dershowitz},
+  title  = {SOFTWARE HORROR STORIES},
+  url    = {https://www.cs.tau.ac.il/~nachumd/verify/horror.html}
+} 
+
+@misc{CertiK,
+  author = {CertiK team},
+  title  = {CertiK framework},
+  url    = {https://www.certik.io/}
+}

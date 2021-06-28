@@ -16,6 +16,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{beamer}
+
 \mode<presentation> {
 \usetheme{Boadilla}
 
@@ -25,8 +26,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{mathrsfs}
-\usepackage{biblatex}
-\addbibresource{biblio.bib}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{presentation.bib}
 %--------------------------------------
 
 % As well as themes, the Beamer class has a number of color themes
@@ -68,7 +69,7 @@
 \institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {Московский физико-технический институт \\
 Физтех-школа Прикладной Математики и Информатики \\
-Кафедра дискретной математики\\ % Your institution for the title page
+Кафедра дискретной математики\\~\\ % Your institution for the title page
 Научный руководитель: Дашков Евгений Владимирович
 }
 \date{\today} % Date, can be changed to a custom date
@@ -93,15 +94,51 @@
 	\frametitle{Зачем нужна формальная верификация?}
 	\begin{block}{Сферы применения}
 		\begin{itemize}
-			\item<2-> Аппаратное обеспечение \cite{intel}
-			\item<2-> Компьютерная безопасность
-			\item<3-> Криптография
-			\item<4-> Медицина
+			\item<2-> Аппаратное обеспечение -- Intel \cite{intel}.
+			\item<3-> Криптография -- Scilla \cite{Scilla}, CertiK \cite{CertiK}.
+			\item<4-> Критическое ПО -- CompCert \cite{CompCert}, seL4 \cite{seL4}.
+			\item<5-> Медицина, банковское дело, транспортные технологии, и т.д.
 		\end{itemize}
 	\end{block}
 \end{frame}
 
-\begin{frame}[shrink=30]
+\begin{frame}
+	\frametitle{Что бывает, если не верифицировать ПО}
+	\begin{block}{Истории неудач}
+		\begin{itemize}
+			\item<2-> Сорвалась миссия НАСА Mars Climate Orbiter.
+			\item<3-> Ненадлежащее тестирование Лондонской службы скорой помощи привело к гибели людей.
+			\item<4-> Самолет Airbus A320 разбился на демонстрационном полете из-за ошибке в софте.
+			\item<5-> Много страшных историй: \cite{horror}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Coq}
+	\begin{itemize}
+		\item<2-> Coq -- программное средство доказательства теорем.
+		\item<3-> Coq основан на теории типов (Исчисление Индуктивных Конструкций, Calculus of Inductive Constructions, CIC)
+		\item<4-> CIC способна представлять:
+		      \begin{itemize}
+			      \item<5-> Функциональные программы в стиле ML.
+			      \item<6-> Доказательства в логике высшего порядка.
+		      \end{itemize}
+		\item<7-> Утверждения и доказательства представляются с помощью Соответствия Карри — Ховарда:
+		      \begin{itemize}
+			      \item<8-> Пропозициональное утверждение $\iff$ Тип
+			      \item<9-> Доказательство утверждения $\iff$ Элемент данного типа
+		      \end{itemize}
+		\item<10-> Vernacular -- язык команд Coq.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Логика Хоара}
+	Здесь могла быть логика Хоара. 
+\end{frame}
+
+\begin{frame}[allowframebreaks]
 	\frametitle{Список литературы}
 	\printbibliography
 \end{frame}

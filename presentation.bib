@@ -100,3 +100,62 @@
   title  = {CertiK framework},
   url    = {https://www.certik.io/}
 }
+
+@article{Hoare,
+  author     = {Hoare, C. A. R.},
+  title      = {An Axiomatic Basis for Computer Programming},
+  year       = {1969},
+  issue_date = {Oct. 1969},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {12},
+  number     = {10},
+  issn       = {0001-0782},
+  url        = {https://doi.org/10.1145/363235.363259},
+  doi        = {10.1145/363235.363259},
+  abstract   = {In this paper an attempt is made to explore the logical foundations of computer programming by use of techniques which were first applied in the study of geometry and have later been extended to other branches of mathematics. This involves the elucidation of sets of axioms and rules of inference which can be used in proofs of the properties of computer programs. Examples are given of such axioms and rules, and a formal proof of a simple theorem is displayed. Finally, it is argued that important advantage, both theoretical and practical, may follow from a pursuance of these topics.},
+  journal    = {Commun. ACM},
+  month      = oct,
+  pages      = {576–580},
+  numpages   = {5},
+  keywords   = {programming language design, axiomatic method, theory of programming' proofs of programs, machine-independent programming, program documentation, formal language definition}
+}
+
+@inproceedings{SepLogic,
+  author    = {Reynolds, J.C.},
+  booktitle = {Proceedings 17th Annual IEEE Symposium on Logic in Computer Science},
+  title     = {Separation logic: a logic for shared mutable data structures},
+  year      = {2002},
+  volume    = {},
+  number    = {},
+  pages     = {55-74},
+  doi       = {10.1109/LICS.2002.1029817}
+}
+
+@inproceedings{SepLogicTime,
+  author    = {Atkey, Robert},
+  editor    = {Gordon, Andrew D.},
+  title     = {Amortised Resource Analysis with Separation Logic},
+  booktitle = {Programming Languages and Systems},
+  year      = {2010},
+  publisher = {Springer Berlin Heidelberg},
+  address   = {Berlin, Heidelberg},
+  pages     = {85--103},
+  abstract  = {Type-based amortised resource analysis following Hofmann and Jost---where resources are associated with individual elements of data structures and doled out to the programmer under a linear typing discipline---have been successful in providing concrete resource bounds for functional programs, with good support for inference. In this work we translate the idea of amortised resource analysis to imperative languages by embedding a logic of resources, based on Bunched Implications, within Separation Logic. The Separation Logic component allows us to assert the presence and shape of mutable data structures on the heap, while the resource component allows us to state the resources associated with each member of the structure.},
+  isbn      = {978-3-642-11957-6}
+}
+
+@inproceedings{base_article,
+  author    = {Gu{\'e}neau, Arma{\"e}l
+and Chargu{\'e}raud, Arthur
+and Pottier, Fran{\c{c}}ois},
+  editor    = {Ahmed, Amal},
+  title     = {A Fistful of Dollars: Formalizing Asymptotic Complexity Claims via Deductive Program Verification},
+  booktitle = {Programming Languages and Systems},
+  year      = {2018},
+  publisher = {Springer International Publishing},
+  address   = {Cham},
+  pages     = {533--560},
+  abstract  = {We present a framework for simultaneously verifying the functional correctness and the worst-case asymptotic time complexity of higher-order imperative programs. We build on top of Separation Logic with Time Credits, embedded in an interactive proof assistant. We formalize the O notation, which is key to enabling modular specifications and proofs. We cover the subtleties of the multivariate case, where the complexity of a program fragment depends on multiple parameters. We propose a way of integrating complexity bounds into specifications, present lemmas and tactics that support a natural reasoning style, and illustrate their use with a collection of examples.},
+  isbn      = {978-3-319-89884-1}
+}

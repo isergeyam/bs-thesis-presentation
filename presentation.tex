@@ -27,6 +27,8 @@
 \usepackage[russian]{babel}
 \usepackage{mathrsfs}
 \usepackage[backend=biber]{biblatex}
+\usepackage{minted}
+\usemintedstyle{tango}
 \addbibresource{presentation.bib}
 %--------------------------------------
 
@@ -84,7 +86,7 @@
 	\frametitle{Постановка задачи}
 	\begin{block}{Цель работы}
 		\begin{itemize}
-			\item<2-> Исследование методов формальной верификации корректности и асимптотики алгоритмов.
+			\item<2-> Исследование методов формальной верификации корректности и асимптотики алгоритмов, предложенных в статье Шагеро и др. \cite{base_article}.
 			\item<3-> Применение исследованных методов на примере верификации алгоритма динамического программирования LCS.
 		\end{itemize}
 	\end{block}
@@ -122,12 +124,12 @@
 		\item<4-> CIC способна представлять:
 		      \begin{itemize}
 			      \item<5-> Функциональные программы в стиле ML.
-			      \item<6-> Доказательства в логике высшего порядка.
+			      \item<6-> Логические утверждения и их формальные доказательства.
 		      \end{itemize}
 		\item<7-> Утверждения и доказательства представляются с помощью Соответствия Карри — Ховарда:
 		      \begin{itemize}
-			      \item<8-> Пропозициональное утверждение $\iff$ Тип
-			      \item<9-> Доказательство утверждения $\iff$ Элемент данного типа
+			      \item<8-> Пропозициональное утверждение $\iff$ Тип.
+			      \item<9-> Доказательство утверждения $\iff$ Элемент(терм) данного типа.
 		      \end{itemize}
 		\item<10-> Vernacular -- язык команд Coq.
 	\end{itemize}
@@ -135,7 +137,149 @@
 
 \begin{frame}
 	\frametitle{Логика Хоара}
-	Здесь могла быть логика Хоара. 
+	\begin{itemize}
+		\item<2-> Логика Хоара \cite{Hoare} -- формальная системa, которая позволяет рассуждать о корректности императивных программ.
+		\item<3-> Тройка Хоара $\{P\}C\{Q\}$
+		      \begin{itemize}
+			      \item<4-> P и Q – предикаты на множестве состояний.
+			      \item<5-> C – некоторая последовательность команд.
+		      \end{itemize}
+		\item<6-> Тройка выводится $\iff$ если текущее состояние удовлетворяет утверждению P,
+		      то после выполнения на нем программы C она будет удовлетворять утверждению Q.
+		\item<7-> Пример: $\{x = 3 \land y = 4\} [x := x + y] \{x = 7 \land y = 4\}$.
+		\item<8-> Логика Хоара неприменима, если в программе есть общее состояние(указатели).
+		\item<9-> Пример $\{x \mapsto 3 \land y \mapsto 3\}[*x := 4]\{x \mapsto 4 \land y \mapsto ?\}$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Сепарационная логика}
+	\begin{itemize}
+		\item<2-> Сепарационная Логика \cite{SepLogic} -- расширение логики Хоара.
+		\item<3-> Вводится дополнительна операция $P \ast Q$ -- разделяющая конъюнкция.
+		      \begin{itemize}
+			      \item<4-> Текущее состояние может быть разделено на два непересекающихся в адресном пространстве состояния.
+			      \item<5-> Каждое из них удовлетворяет P и Q соответственно.
+		      \end{itemize}
+		\item<6-> Новое правило вывода(правило разделения):
+		      $$
+			      \frac{\{P\} C\{Q\}}{\{P * R\} C\{Q * R\}}
+		      $$
+		\item<7-> Пример: $\{x \mapsto 3 \ast y \mapsto 3\}[*x = 4]\{x \mapsto 4 \ast y \mapsto 3\}$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Сепарационная Логика с временными ресурсами}
+	\begin{itemize}
+		\item<2-> Основная идея \cite{SepLogicTime} -- введение времени как потребляемого ресурса внутрь предиката состояния.
+		\item<3-> Предикат $\$1$ означает возможность сделать один шаг вычисления.
+		\item<4-> Предикат $\$n$ -- разделяющая конъюнкция n предикатов $\$1$.
+		\item<5-> Ресурс поглощается при выполнении шага вычисления.
+		\item<6-> Пример: $\{\$10 \ast x \mapsto 3 \ast y \mapsto 3\}[*x = 4]\{\$9 \ast x \mapsto 4 \ast y \mapsto 3\}$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Реализация LCS}
+	\begin{minted}{ocaml}
+let lcs (a : int array) (b : int array) : int array =
+  let n = Array.length a in
+  let m = Array.length b in
+  let c = Array.make ((n+1)*(m+1)) [] in
+  for i = 1 to n do
+    for j = 1 to m do
+      if a.(i-1) = b.(j-1)
+      then c.(i*(m+1) + j) <- 
+      	List.append c.((i-1)*(m+1) + j - 1) [a.(i-1)]
+      else if List.length c.((i-1)*(m+1) + j) > 
+      	List.length c.(i*(m+1) + j - 1)
+        then c.(i*(m+1) + j) <- c.((i-1)*(m+1) + j)
+        else c.(i*(m+1) + j) <- c.(i*(m+1) + j - 1)
+      done
+    done; 
+  Array.of_list c.((n+1)*(m+1)-1);;
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Определение SubSeq}
+	\begin{minted}{coq}
+Inductive SubSeq {A:Type} : list A -> list A -> Prop :=
+ | SubNil (l:list A) : SubSeq nil l
+ | SubCons1 (x:A) (l1 l2:list A) (H: SubSeq l1 l2) : 
+ 		SubSeq l1 (x::l2)
+ | SubCons2 (x:A) (l1 l2:list A) (H: SubSeq l1 l2) : 
+ 		SubSeq (x::l1) (x::l2).
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Определение Lcs}
+	\begin{minted}{coq}
+Definition Lcs {A: Type} l l1 l2 :=
+  SubSeq l l1 /\ SubSeq l l2 /\ 
+  (forall l': list A, SubSeq l' l1 /\ SubSeq l' l2 -> 
+  	length l' <= length l). 
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Необходимые свойства Lcs}
+	\begin{minted}{coq}
+Lemma lcs_app_eq: forall (l1 l2 l: list int) (x: int),
+  Lcs l l1 l2 -> Lcs (l & x) (l1 & x) (l2 & x). 
+
+Lemma lcs_app_neq: forall (l1 l2 l l': list int) (x y : int),
+  x <> y -> Lcs l (l1&x) l2 -> Lcs l' l1 (l2&y) -> 
+  	length l' <= length l -> Lcs l (l1&x) (l2&y). 
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Формулировка основной теоремы}
+	\begin{minted}{coq}
+Lemma lcs_spec:
+  specO
+    (product_filterType Z_filterType Z_filterType)
+    ZZle
+  ( fun cost =>
+  forall (l1 l2 : list int) p1 p2,
+  app lcs [p1 p2]
+  PRE (\$(cost (LibListZ.length l1, LibListZ.length l2)) \*
+  p1 ~> Array l1 \* p2 ~> Array l2)
+  POST (fun p => Hexists (l : list int), p ~> Array l \* 
+  	\[Lcs l l1 l2]))
+  (fun '(n,m) => n * m).
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Инвариант цикла}
+	\begin{minted}[]{coq}
+xfor_inv (fun (i:int) => 
+Hexists (x' : list (list int)),
+p1 ~> Array l1 \*
+p2 ~> Array l2 \*
+c ~> Array x' \*
+\[length x' = (n+1)*(m+1)] \*
+\[forall i1 i2 : int, 0 <= i1 < i -> 0 <= i2 <= m -> 
+Lcs x'[i1*(m+1) + i2] (take i1 l1 ) (take i2 l2) ] \* 
+\[forall i', i*(m+1) <= i' < (n+1)*(m+1) ->
+x'[i'] = nil ]). 
+	\end{minted}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Возможные темы дальнейшего исследования}
+	\begin{itemize}
+		\item<2-> Реализация функции \textcolor{blue}{HForall}.
+		      \begin{itemize}
+			      \item<3-> Реализовать саму функцию.
+			      \item<4-> Доказать ее свойства для интеграции с тактикой \textcolor{blue}{hsimpl}.
+		      \end{itemize}
+		\item<5-> Формальная верификация асимптотики вероятностных алгоритмов.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]
